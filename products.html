@@ -3,13 +3,160 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Our Products | FrostFresh</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | FrostFresh Cold Store</title>
+
+    <style>
+        /* 1. Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #111827;
+            background-color: #F9FAFB;
+        }
+
+        /* 2. Responsive Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 10px;
+        }
+
+        /* 3. Navigation */
+        nav {
+            background: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #1A6EE6;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4B5563;
+            font-weight: 600;
+        }
+
+        /* 4. Page Header */
+        .shop-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .shop-intro h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        /* 5. THE RESPONSIVE GRID - The most important part */
+        .product-grid {
+            display: grid;
+            /* This tells the computer: Fit as many 250px boxes as you can. 
+               If the screen is small, it will automatically drop to 1 column. */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        /* 6. Product Card Styling */
+        .p-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .p-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            /* Stops image from stretching */
+        }
+
+        .p-info {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .price {
+            color: #1A6EE6;
+            font-size: 20px;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .buy-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: auto;
+        }
+
+        /* 7. Mobile Adjustments */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .shop-intro h2 {
+                font-size: 24px;
+            }
+
+            .container {
+                width: 95%;
+            }
+
+            /* Optional: Show 2 items per row on medium phones */
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 15px;
+            }
+
+            .p-info h3 {
+                font-size: 16px;
+            }
+
+            .price {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+
     <nav>
-        <div class="logo">❄️FrostFresh</div>
+        <a href="index.html" class="logo">❄️ FrostFresh</a>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="products.html">Products</a></li>
@@ -19,16 +166,45 @@
     </nav>
 
     <div class="container">
-        <header class="page-header">
+        <div class="shop-intro">
             <h2>Shop Fresh This Week</h2>
-            <p>Visit us at our locations or order via WhatsApp for same day dispatch.</p>
-        </header>
-
-        <div id="product-grid" class="product-grid">
+            <p>Quality frozen seafood and poultry delivered to your door.</p>
         </div>
+
+        <div id="product-grid" class="product-grid"></div>
     </div>
 
-    <script src="scripts.js"></script>
+    <script>
+        const myStock = [
+            { name: "Premium Salmon", price: "GH₵ 125.00", img: "salmon.jpeg" },
+            { name: "Jumbo Crab", price: "GH₵ 90.00", img: "crab.jpg" },
+            { name: "Beef Sausages", price: "GH₵ 55.00", img: "sausage.jpg" },
+            { name: "Whole Chicken", price: "GH₵ 95.00", img: "frozen-whole-chicken.jpg" },
+            { name: "Fresh Tilapia", price: "GH₵ 48.00", img: "tilapia.jpg" },
+            { name: "Red Fish", price: "GH₵ 85.00", img: "red fish.jpg" },
+            { name: "Chicken Drumsticks", price: "GH₵ 65.00", img: "chicken drumsticks.jpg" },
+            { name: "Atlantic Salmon", price: "GH₵ 120.00", img: "salmon.jpg" }
+        ];
+
+        const grid = document.getElementById('product-grid');
+
+        myStock.forEach(item => {
+            grid.innerHTML += `
+                <div class="p-card">
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="p-info">
+                        <h3>${item.name}</h3>
+                        <p class="price">${item.price}</p>
+                        <button class="buy-btn" onclick="order('${item.name}')">Order on WhatsApp</button>
+                    </div>
+                </div>
+            `;
+        });
+
+        function order(name) {
+            window.open("https://wa.me/233542700593?text=I want to order " + name, "_blank");
+        }
+    </script>
 </body>
 
 </html>
