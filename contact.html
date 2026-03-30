@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | FrostFresh Cold Store</title>
+
+    <style>
+        /* 1. Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #111827;
+            background-color: #F9FAFB;
+        }
+
+        /* 2. Responsive Container - Prevents touching edges */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            /* Space inside the edges */
+        }
+
+        /* 3. Navigation Styling */
+        nav {
+            background: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #1A6EE6;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4B5563;
+            font-weight: 600;
+        }
+
+        /* 4. Contact Grid Layout */
+        .contact-section {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-top: 20px;
+            padding: 40px;
+            /* Internal padding for the white box */
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #111;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-card h3 {
+            color: #1A6EE6;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-left: 4px solid #1A6EE6;
+            padding-left: 10px;
+        }
+
+        .contact-card p {
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .contact-card a {
+            color: #1A6EE6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* 5. Mobile Adjustments */
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                padding: 20px 10px;
+            }
+
+            .contact-section {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">FrostFresh</a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="contact-section">
+            <h1>Get In Touch</h1>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Direct Contact</h3>
+                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/233542700593">0542700593</a></p>
+                    <p><strong>Call:</strong> <a href="tel:0540649244">0540649244</a></p>
+                    <p><strong>Other:</strong> 0536649432</p>
+                    <p><strong>Email:</strong> info@frostfresh.com.gh</p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Operating Hours</h3>
+                    <p><strong>Mon - Sat:</strong> 8:00 AM - 7:00 PM</p>
+                    <p><strong>Sunday:</strong> 10:00 AM - 4:00 PM</p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Our Branches</h3>
+                    <p>Accra - Spintex Road</p>
+                    <p>Kumasi - Main Market</p>
+                    <p>Tema - Harbour Area</p>
+                    <p>Takoradi - Port Road</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/233542700593" class="whatsapp-float" target="_blank">Order via WhatsApp</a>
+
+</body>
+
+</html>
